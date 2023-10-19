@@ -32,7 +32,9 @@ const Home = () => {
     // create query object
     const q = query(usersRef, where("uid", "not-in", [user1]));
     // execute query
-    const unsub = onSnapshot(q, (querySnapshot) => {
+
+
+    const fetchUsers = onSnapshot(q, (querySnapshot) => {
       let users = [];
       querySnapshot.forEach((doc) => {
         users.push(doc.data());
@@ -41,7 +43,7 @@ const Home = () => {
 
       console.log("Fetched users:", users);
     });
-    return () => unsub();
+    return () => fetchUsers();
   }, []);
 
   const selectUser = async (user) => {
