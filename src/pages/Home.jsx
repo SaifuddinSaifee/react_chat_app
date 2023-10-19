@@ -98,6 +98,8 @@ const Home = () => {
       media: url || "",
     });
 
+    // recording the last message of the chat
+
     await setDoc(doc(db, "lastMsg", id), {
       text,
       from: user1,

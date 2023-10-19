@@ -153,7 +153,8 @@ section .form {
     overflow-y: auto;
 }
 .user_wrapper {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    margin: 10px;
     padding: 10px;
     cursor: pointer;
 }
@@ -261,21 +262,31 @@ section .form {
     text-align: right;
 }
 .me {
+    word-wrap: break-word;
     background: var(--color-3);
     color: white;
-    border-radius: 16px 0px 16px 16px;
+    margin-right: 10px;
+    border-radius: 20px 0px 20px 20px;
     background: #6441A5;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #6d25a8, #6441A5);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #7b4aa2, #6441A5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
 }
 .friend {
+    word-wrap: break-word;
+    margin-left: 10px;
     background: var(--color-6);
     color: white;
-    border-radius: 0px 16px 16px 16px;
+    border-radius: 0px 20px 20px 20px;
 }
 .selected_user {
     background: var(--color-6);
+    border-radius: 16px;
+    margin: 10px;
+    background: #6441A5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6d25a8, #6441A5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #7b4aa2, #6441A5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
 }
 .truncate {
     font-size: 14px;
@@ -317,6 +328,7 @@ section .form {
     }
     .user_wrapper {
         display: none;
+        
     }
     .sm_container {
         padding: 10px 0px;
