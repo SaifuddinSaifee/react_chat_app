@@ -6,14 +6,14 @@ import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAot9FusK9cgAikqrZrUVpg55RNLUI79Jk",
-  authDomain: "reactchatapp-1bc36.firebaseapp.com",
-  projectId: "reactchatapp-1bc36",
-  databaseURL: "https://reactchatapp-1bc36.firebaseio.com",
-  storageBucket: "reactchatapp-1bc36.appspot.com",
-  messagingSenderId: "705189158557",
-  appId: "1:705189158557:web:c8d7d05d3bd88f70dc7e74",
-  measurementId: "G-VF2QQ8W41N"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  databaseURL: process.env.databaseURL,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId
 };
 
 const app = initializeApp(firebaseConfig);
