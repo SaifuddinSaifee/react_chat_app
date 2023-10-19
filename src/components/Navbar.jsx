@@ -8,6 +8,8 @@ import { AuthContext } from "../context/auth";
 
 const Navbar = () => {
   const {user} = useContext(AuthContext)
+  console.log(user);
+
   const navigate = useNavigate();
     const handleSignout = async () => {
         try {
@@ -29,10 +31,10 @@ const Navbar = () => {
             </h3>
             <div>
                 {user ? (
-                    <>
-                        <Link to="/profile">profile</Link>
+                    <div className="nav_elements">
+                        <Link to="/profile">{user.email}</Link>
                         <button className="btn" onClick={handleSignout}>Logout</button>
-                    </>
+                    </div>
                 ) : (
                     <>
                         <Link to="/register">Register</Link>
