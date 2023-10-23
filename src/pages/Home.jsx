@@ -24,8 +24,53 @@ const Home = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState("");
   const [msgs, setMsgs] = useState([]);
+  const [isTabVisible, setIsTabVisible] = useState(true); // Added state for tab visibility
 
   const user1 = auth.currentUser.uid;
+
+  // Use the Page Visibility API to detect tab changes
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // User changed tabs or minimized the window
+        setIsTabVisible(false);
+        // Set user status to "offline" in Firebase here
+        handleIsOffline();
+      } else {
+        // User switched back to the tab
+        setIsTabVisible(true);
+        // Set user status to "online" in Firebase here
+        handleIsOnline();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  const handleIsOnline = async () => {
+    try {
+      await updateDoc(doc(db, "users", user1), {
+        isOnline: true,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleIsOffline = async () => {
+    try {
+      await updateDoc(doc(db, "users", user1), {
+        isOnline: false,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
 
   useEffect(() => {
     const usersRef = collection(db, "users");
