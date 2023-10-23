@@ -28,6 +28,14 @@ const Home = () => {
 
   const user1 = auth.currentUser.uid;
 
+  useEffect(() => {
+    // Set user status to "offline" when the tab is closed
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+  
   // Use the Page Visibility API to detect tab changes
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -69,6 +77,11 @@ const Home = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleBeforeUnload = () => {
+    // Set user status to "offline" when the tab is closed
+    handleIsOffline();
   };
   
 
